@@ -132,7 +132,11 @@ class ProductManager {
 }
 
 
+module.exports = { ProductModel, ProductManager }
 
+
+
+/*
 const productManager = new ProductManager("productos.json");
 
 const product1 = new ProductModel(
@@ -224,4 +228,4 @@ const test = async () => {
 };
 
 // Ejecucion del test
-test()
+test()*/
