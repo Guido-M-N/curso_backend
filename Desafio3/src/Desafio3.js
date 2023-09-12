@@ -1,5 +1,5 @@
 const fs = require('fs')
-const { get } = require('http')
+const path = require('path')
 
 class ProductModel {
     constructor(title, description, price, thumbnail, code, stock) {
@@ -136,8 +136,8 @@ module.exports = { ProductModel, ProductManager }
 
 
 
-/*
-const productManager = new ProductManager("productos.json");
+
+const productManager = new ProductManager(path.resolve(__dirname, 'productos.json'));
 
 const product1 = new ProductModel(
     title = "producto prueba 1",
@@ -193,6 +193,51 @@ const product6 = new ProductModel(
     stock = 120
 );
 
+const product7 = new ProductModel(
+    title = "producto prueba 7",
+    description = 'Este es un producto prueba 7',
+    price = 240,
+    thumbnail = 'Sin imagen',
+    code = 'abc127',
+    stock = 120
+);
+
+const product8 = new ProductModel(
+    title = "producto prueba 8",
+    description = 'Este es un producto prueba 8',
+    price = 240,
+    thumbnail = 'Sin imagen',
+    code = 'abc128',
+    stock = 120
+);
+
+const product9 = new ProductModel(
+    title = "producto prueba 9",
+    description = 'Este es un producto prueba 9',
+    price = 240,
+    thumbnail = 'Sin imagen',
+    code = 'abc129',
+    stock = 120
+);
+
+const product10 = new ProductModel(
+    title = "producto prueba 10",
+    description = 'Este es un producto prueba 10',
+    price = 240,
+    thumbnail = 'Sin imagen',
+    code = 'abc130',
+    stock = 120
+);
+
+const product11 = new ProductModel(
+    title = "producto prueba 11",
+    description = 'Este es un producto prueba 11',
+    price = 240,
+    thumbnail = 'Sin imagen',
+    code = 'abc131',
+    stock = 120
+);
+
 const updatedProduct = new ProductModel(
     title = "producto prueba ACTUALIZADO",
     description = 'Este es un producto prueba 3',
@@ -201,7 +246,7 @@ const updatedProduct = new ProductModel(
     code = 'abc121',
     stock = 120
 );
-
+/*
 // Funcion de test
 const test = async () => {
 
@@ -213,6 +258,11 @@ const test = async () => {
     console.log(await productManager.addProduct(product4));
     console.log(await productManager.addProduct(product5));
     console.log(await productManager.addProduct(product6));
+    console.log(await productManager.addProduct(product7));
+    console.log(await productManager.addProduct(product8));
+    console.log(await productManager.addProduct(product9));
+    console.log(await productManager.addProduct(product10));
+    console.log(await productManager.addProduct(product11));
 
     console.log(await productManager.getProducts());
 
