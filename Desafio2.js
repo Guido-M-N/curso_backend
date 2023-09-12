@@ -197,7 +197,7 @@ const updatedProduct = new ProductModel(
     code = 'abc121',
     stock = 120
 );
-
+/*
 // Funcion de test
 const test = async () => {
 
@@ -224,4 +224,4 @@ const test = async () => {
 };
 
 // Ejecucion del test
-test()
+test()*/
