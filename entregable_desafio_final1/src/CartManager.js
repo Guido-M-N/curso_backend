@@ -64,7 +64,7 @@ class CartManager {
         try {
             const carts = await this.getCarts()
             const cart = carts.find(cart => cart.id == cid)
-            const product = await productManager.getProductById(cid)
+            const product = await productManager.getProductById(pid)
             if(product == -1) return -1
             const newProduct = {
                 id: pid,
