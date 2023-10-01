@@ -1,5 +1,5 @@
 import { Router } from "express";
-const ProductManager = require('../Desafio3');
+const ProductManager = require('../ProductManager');
 const path = require('path');
 
 const productManager = new ProductManager(path.resolve(__dirname, 'productos.json'));
