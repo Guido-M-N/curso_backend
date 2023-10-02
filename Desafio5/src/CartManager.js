@@ -1,7 +1,7 @@
-const fs = require('fs')
-const path = require('path')
-const {productManager} = require('./ProductManager')
-
+import fs from 'fs';
+import path from 'path';
+import __dirname from './utils.js';
+import { productManager } from "./ProductManager.js";
 class CartManager {
     
     constructor(path){
@@ -89,4 +89,4 @@ class CartManager {
 
 const cartManager = new CartManager(path.resolve(__dirname, 'carritos.json'));
 
-module.exports = cartManager
+export default cartManager

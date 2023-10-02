@@ -1,8 +1,6 @@
-const Router = require('express');
-const cartManager = require('../src/CartManager');
-const path = require('path');
-const express = require ('express');
-const app = express();
+import { Router } from 'express';
+import cartManager from '../CartManager.js';
+
 const router = Router();
 
 router.post('/', async(req, res) => {
@@ -40,4 +38,4 @@ router.post('/:cid/product/:pid', async(req,res) => {
     }
 });
 
-module.exports = router;
+export default router;

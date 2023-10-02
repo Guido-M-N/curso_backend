@@ -1,6 +1,7 @@
-const fs = require('fs')
-const path = require('path')
-const Product = require('../Product.js')
+import fs from 'fs';
+import path from 'path';
+import __dirname from './utils.js';
+import Product from './Product.js';
 
 class ProductManager {
     constructor(path){
@@ -122,7 +123,7 @@ class ProductManager {
     }
 }
 
-const productManager = new ProductManager(path.resolve(__dirname, 'productos.json'));
+export const productManager = new ProductManager(path.resolve(__dirname, 'productos.json'));
 
-module.exports = { Product, productManager }
+export default Product
 

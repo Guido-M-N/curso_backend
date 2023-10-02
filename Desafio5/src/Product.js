@@ -95,4 +95,4 @@ class Product {
 }
 
 
-module.exports = Product;
+export default Product;
