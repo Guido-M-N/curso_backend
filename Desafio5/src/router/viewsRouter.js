@@ -1,20 +1,17 @@
 import { Router } from "express";
+import { productManager } from "../ProductManager.js";
 
 const router = Router();
 
-const prueba = {
-    nombre: 'guido',
-    apellido: 'navia'
-}
-
-router.get('/', (req, res) => {
-    console.log("viewsRouter")
-    res.render('index', {});
+router.get('/home', async (req, res) => {
+    const products = await productManager.getProducts();
+    res.render('home', { products });
 });
 
-router.get('/products/view', (req, res) => {
-    console.log("viewsProducts")
-    res.render('home', { productos: prueba });
+router.get('/realtimeproducts', async (req, res) => {
+    const products = await productManager.getProducts();
+    res.render('realTimeProducts', { products });
 });
+
 
 export default router;

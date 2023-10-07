@@ -1,20 +1,22 @@
 <div>
-    <h1>Listado de productos</h1>
+    <h1>Product catalogue</h1>
     <table>
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Foto</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
-            {{#each productos}}
+            {{#each products}}
             <tr>
-                <td>{{this.title}}</td>
-                <td>{{this.price}}</td>
-                <td><img src="{{this.thumbnail}}" alt="not found" width="50" height="50"></td>
+                <td>{{title}}</td>
+                <td>{{price}}</td>
+                <td>{{description}}</td>
+                {{!-- <td><img src="{{this.thumbnail}}" alt="not found" width="50" height="50"></td> --}}
             </tr>
             {{/each}}
         </tbody>
+    </table>
 </div>
