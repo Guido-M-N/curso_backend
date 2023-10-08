@@ -1,21 +1,25 @@
 <div>
     <h2>Add product</h2>
-    <form>
+    <form id="addProductForm">
         <div>
             <label for="title">Title</label>
-            <input type="text" id="title" name="title" placeholder="Title">
+            <input type="text" id="productTitle" name="title" placeholder="Title">
         </div>
         <div>
             <label for="price">Price</label>
-            <input type="number" id="price" name="price" placeholder="Price">
+            <input type="number" id="productPrice" name="price" placeholder="Price">
         </div>
         <div>
             <label for="description">Description</label>
-            <input type="text" id="description" name="description" placeholder="Description">
+            <input type="text" id="productDescription" name="description" placeholder="Description">
         </div>
         <div>
-            <label for="thumbnail">Thumbnail</label>
-            <input type="text" id="thumbnail" name="thumbnail" placeholder="Thumbnail">
+            <label for="code">Code</label>
+            <input type="text" id="productCode" name="code" placeholder="Code">
+        </div>
+        <div>
+            <label for="stock">Stock</label>
+            <input type="text" id="productStock" name="stock" placeholder="Stock">
         </div>
         <button type="submit">Add</button>
     </form>
@@ -23,28 +27,22 @@
 
 <div>
     <h1>Product catalogue</h1>
-    <table id="table">
+    <table id="productTable">
         <thead>
             <tr>
                 <th>id</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Code</th>
+                <th>Stock</th>
             </tr>
         </thead>
-        <tbody id="tableBody">
-            {{#each productos}}
-            <tr>
-                <td>{{id}}</td>
-                <td>{{title}}</td>
-                <td>{{price}}</td>
-                <td>{{description}}</td>
-                {{!-- <td><img src="{{this.thumbnail}}" alt="not found" width="50" height="50"></td> --}}
-            </tr>
-            {{/each}}
+        <tbody id="productTableBody">
+            <!-- Datos que van a venir por sockets -->
         </tbody>
 </div>
 
 
-<script>src="/socket.io/socket.io.js"</script>
-<script>src="/js/index.js"</script>
+<script src="socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>

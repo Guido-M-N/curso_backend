@@ -25,14 +25,17 @@ const httpServer = app.listen(8080, () => {
     console.log('Servidor levantado en el puerto 8080');
 });
 
-const socketServer = new Server(httpServer);
+export const socketServer = new Server(httpServer);
 
 socketServer.on('connection', (socket) => {
-    console.log(`Nuevo cliente conectado! \n Bienvenido: ${socket.id}`);
+    console.log(`Nuevo cliente conectado! \nBienvenido: ${socket.id}`);
 
     socket.on('createProduct', async (product) => {
+        console.log(product.description);
         const newProduct = await productManager.addProduct(product);
+        console.log(newProduct);
         socket.emit('productCreated', newProduct);
-        console.log('producto creado: ' +newProduct);
     });
+    
+    socket.emit('getProducts', async () => await productManager.getProducts());
 });

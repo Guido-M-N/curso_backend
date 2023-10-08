@@ -12,9 +12,8 @@ class ProductManager {
         if (!product.title) return "Falta el titulo"
         if (!product.description) return "Falta el descripcion"
         if (!product.price) return "Falta el precio"
-        if (!product.thumbnail) return "Falta el thumbnail"
-        if (!product.code) return "Falta el codigo de identificacion"
-        if (!product.stock) return "Falta el dato de stock"
+        //if (!product.code) return "Falta el codigo de identificacion"
+        //if (!product.stock) return "Falta el dato de stock"
 
         const newProduct = new Product( product.title, product.description, product.stock, product.price, product.code, product.thumbnail, product.category )
 
@@ -33,7 +32,7 @@ class ProductManager {
 
             await fs.promises.writeFile(this.path, JSON.stringify(products))
 
-            return "Producto añadido con exito"
+            return newProduct
         }
 
         catch (error) {
