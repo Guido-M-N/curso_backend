@@ -1,0 +1,48 @@
+<div>
+    <h2>Add product</h2>
+    <form id="addProductForm">
+        <div>
+            <label for="title">Title</label>
+            <input type="text" id="productTitle" name="title" placeholder="Title">
+        </div>
+        <div>
+            <label for="price">Price</label>
+            <input type="number" id="productPrice" name="price" placeholder="Price">
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <input type="text" id="productDescription" name="description" placeholder="Description">
+        </div>
+        <div>
+            <label for="code">Code</label>
+            <input type="text" id="productCode" name="code" placeholder="Code">
+        </div>
+        <div>
+            <label for="stock">Stock</label>
+            <input type="text" id="productStock" name="stock" placeholder="Stock">
+        </div>
+        <button type="submit">Add</button>
+    </form>
+</div>
+
+<div>
+    <h1>Product catalogue</h1>
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Code</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody">
+            <!-- Datos que van a venir por sockets -->
+        </tbody>
+</div>
+
+
+<script src="socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
