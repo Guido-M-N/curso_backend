@@ -14,6 +14,7 @@ class CartManager extends BasicManager {
         try {
             const cart = await this.model.findById(cartId);
             if (!cart) return "El carrito no existe";
+            console.log(cart)
 
             const product = await productManager.findById(productId);
             if (!product) return "El producto no existe";

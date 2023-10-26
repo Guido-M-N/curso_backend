@@ -4,7 +4,7 @@ import { productManager } from '../dao/db/ProductManager.js';
 const router = Router();
 
 router.get('/', async (req, res) => {
-    let productos = await productManager.getProducts();
+    let productos = await productManager.findAll();
     const query = req.query;
 
     if (query.limit) {
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 router.get('/:pid', async (req, res) => {
     try {
         const {pid} = req.params;
-        const producto = await productManager.getProductById(pid);
+        const producto = await productManager.findById(pid);
         if (producto == -1) res.status(404).json("El producto no existe");
         return res.status(200).json({producto});
     }
@@ -31,7 +31,7 @@ router.get('/:pid', async (req, res) => {
 router.post('/', async (req, res) => {
     try{
         const body = req.body;
-        const producto = await productManager.addProduct(body);
+        const producto = await productManager.createOne(body);
         return res.status(200).json({producto});
     }
     catch(error) {
@@ -43,7 +43,7 @@ router.put('/:pid', async (req, res) => {
     try{
         const {pid} = req.params;
         const body = req.body;
-        const producto = await productManager.updateProduct(pid, body);
+        const producto = await productManager.updateOne(pid, body);
         return res.status(200).json({producto});
     }
     catch(error) {
@@ -54,7 +54,7 @@ router.put('/:pid', async (req, res) => {
 router.delete('/:pid', async (req, res) => {
     try{
         const {pid} = req.params;
-        const producto = await productManager.deleteProduct(pid);
+        const producto = await productManager.deleteOne(pid);
         return res.status(200).json({producto});
     }
     catch(error) {

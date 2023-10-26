@@ -1,5 +1,6 @@
 import { Server } from "socket.io";
 import { messageManager } from "../dao/db/MessageManager.js";
+import { productManager } from "../dao/db/ProductManager.js";
 
 const Websocket = (httpServer) => {
 
@@ -14,13 +15,14 @@ const Websocket = (httpServer) => {
         });
 
         // Nuevo mensaje del chat
-        socket.on('newMessage', async (socket) => {
+        socket.on('newMessage', async (data) => {            
             try {
-                const newMsg = await messageManager.createOne(message);
+                const newMsg = await messageManager.createOne(data);
+                console.log(newMsg);
                 chatSocket.emit('messageCreated', newMsg);
             } catch (error) {
                 socket.emit('error', "No se pudo enviar el mensaje");
-            }
+                console.log(error)}
         });
     })
 

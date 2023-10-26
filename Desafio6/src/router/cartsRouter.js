@@ -5,7 +5,7 @@ const router = Router();
 
 router.post('/', async(req, res) => {
     try {
-        const cart = await cartManager.addCart()
+        const cart = await cartManager.createOne();
         return res.status(200).json(cart)
     } catch (error) {
         return res.status(400).json("No se pudo crear el carrito")
@@ -15,7 +15,7 @@ router.post('/', async(req, res) => {
 router.get('/:cid', async(req,res) => {
     const {cid} = req.params
     try {
-        const cart = await cartManager.getCartById(+cid)
+        const cart = await cartManager.findById(cid)
         if (cart == -1) res.status(404).json("El carrito no existe");
         return res.status(200).json(cart.products)
     } catch (error) {
@@ -29,7 +29,7 @@ router.post('/:cid/product/:pid', async(req,res) => {
     console.log(cid)
     console.log(pid)
     try {
-        const cartProduct = await cartManager.addCartProduct(+pid, +cid)
+        const cartProduct = await cartManager.addProductToCart(cid, pid)
         console.log(cartProduct)
         if (cartProduct == -1) return res.status(404).json("El producto no existe");
         return res.status(200).json(cartProduct)

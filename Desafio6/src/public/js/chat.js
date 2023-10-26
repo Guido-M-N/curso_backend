@@ -1,12 +1,12 @@
 const socketClient = io('/chat');
 const form = document.getElementById("chatForm");
-const inputMessage = document.getElementById("chatMessage");
+const inputMessage = document.getElementById("messageInput");
 const h3Name = document.getElementById("name");
 const divChat = document.getElementById("chat");
+const buttonMessage = document.getElementById("sendMessage")
 
 let user;
 
-const InputMessage = document.getElementById("messageInput");
 
 Swal.fire({
   title: '¡Bienvenido!',
@@ -36,35 +36,44 @@ socketClient.on('newUserBroadcast', (user) => {
   }).showToast();
 })
 
-InputMessage.addEventListener('keyup', (e) => {
+inputMessage.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
-    if  (message.value.trim().length === 0) return Swal.fire('Error', 'Debes ingresar un mensaje', 'error');
-    socket.emit('newMessage', { user, message: message.value });
-    message.value = '';
+    if  (inputMessage.value.trim().length === 0) return Swal.fire('Error', 'Debes ingresar un mensaje', 'error');
+    socketClient.emit('newMessage', { user, message: inputMessage.value });
+    inputMessage.value = '';
   }
 });
 
-  socket.on('messages', (messages) => {
-    const messageLog = document.getElementById('messageLog');
-    const rows = messages.map((data) => {
-        return `
-                <div>
-                    <span class="messageHistory">${data.user}: ${data.message}</span>
-                </div>
-                `;
-    });
-    messageLog.innerHTML += rows.join("");
+
+buttonMessage.addEventListener('click', (e) => {
+  if (inputMessage.value.trim().length === 0) return Swal.fire('Error', 'Debes ingresar un mensaje', 'error');
+  socketClient.emit('newMessage', { user, message: inputMessage.value });
+  inputMessage.value = '';
+});
+
+
+socketClient.on('messages', (messages) => {
+  const messageLog = document.getElementById('messageLog');
+  const rows = messages.map((data) => {
+      return `
+              <div>
+                  <span class="messageHistory">${data.user}: ${data.message}</span>
+              </div>
+              `;
+  });
+  messageLog.innerHTML += rows.join("");
 
 })
 
-socket.on('messageCreated', (data) => {
-    const messageLog = document.getElementById('messageLog');
-    const row = `
-                    <div>
-                        <span class="messageHistory">${data.user}: ${data.message}</span>
-                    </div>
-                `;
+socketClient.on('messageCreated', (data) => {
+  console.log(data)
+  const messageLog = document.getElementById('messageLog');
+  const row = `
+                  <div>
+                      <span class="messageHistory">${data.user}: ${data.message}</span>
+                  </div>
+              `;
 
-    messageLog.innerHTML += row;
+  messageLog.innerHTML += row;
 
 });
